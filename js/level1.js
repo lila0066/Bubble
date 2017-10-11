@@ -74,10 +74,10 @@ function Circle(x, y, dx, dy, radius, id){
 					colorGet.push(this.id);
 
 					//ser LED color
-					if(cpf){
-						cpf.setChainableLed("0," + this.color + ";");
-						//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
-					}
+					// if(cpf){
+					// 	cpf.setChainableLed("0," + this.color + ";");
+					// 	//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
+					// }
 
 					console.log(colorGet);
 				}
@@ -167,6 +167,6 @@ animate();
 
 // cpf setup
 function setup(){
-	if(cpf) var ret = cpf.setPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 1]'); 
+	//if(cpf) var ret = cpf.setPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 1]'); 
 	//document.getElementById("demo").innerHTML += ret + "<br>";
 }
