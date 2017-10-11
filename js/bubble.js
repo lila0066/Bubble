@@ -40,7 +40,7 @@ function Circle(x, y, dx, dy, radius, id){
 	this.dy = dy;
 	this.radius = radius;
 	this.minRadius = radius;
-	this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
+	this.color = colorArray[Math.floor(Math.random() * colorArray.length)]
 	this.range = 15;
 	this.id = id;
 
@@ -68,7 +68,7 @@ function Circle(x, y, dx, dy, radius, id){
 			if(this.radius<maxRadius){
 				this.radius += 8;
 
-				colorGet.push(this.color);
+				colorGet.push(this.id);
 
 				//set LED color
 				//if(cpf){
@@ -97,12 +97,12 @@ function colorCheckFun(getArray) {
 	for(var i=0; i<getArray.length; i++){
 		for(var j=0; j<colorArray.length; j++){
 
-			if((getArray[i]==colorArray[j])&&(colorCheck[j]>0)){
+			if((circleArray[getArray[i]].color==colorArray[j])&&(colorCheck[j]!=0)){
 				setTimeout(function(){
 					alert('game over');
 					location.reload();
 				}, 500);
-			}else if(getArray[i]==colorArray[j]){
+			}else if(circleArray[getArray[i]].color==colorArray[j]){
 				colorCheck[j]++;
 			}
 
