@@ -11,25 +11,21 @@ var mouse = {
 }
 
 var maxRadius = 40;
-
 var colorGet = [];
 
-window.addEventListener('touchmove', function(event){
-	var touchobj = event.targetTouches[0];
+window.addEventListener('touchstart', function(e){
+	var touchobj = e.targetTouches[0];
 	mouse.x = parseInt(touchobj.clientX);
 	mouse.y = parseInt(touchobj.clientY);
 }, false);
 
-window.addEventListener('touchend', function(event){
-	mouse.x = undefined;
-	mouse.y = undefined;
+window.addEventListener('touchend', function(e){
 	colorCheckFun(colorGet);
 }, false);
 
 window.addEventListener('resize', function(){
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-
 	init();
 });
 
@@ -66,10 +62,11 @@ function Circle(x, y, dx, dy, radius, id){
 		//interactivity
 		if(mouse.x-this.x<this.range && mouse.x-this.x>-this.range && mouse.y-this.y<this.range && mouse.y-this.y>-this.range){
 			if(this.radius<maxRadius){
-				this.radius += 8;
+				this.radius += 10;
 
-				if(colorGet.indexOf(this.id)==-1){
 					colorGet.push(this.id);
+					mouse.x = undefined;
+					mouse.y = undefined;
 
 					//set LED color
 					//if(cpf){
@@ -77,19 +74,13 @@ function Circle(x, y, dx, dy, radius, id){
 						//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
 					//}
 
-				}
-
 			}				
 		}else if(this.radius>this.minRadius){
 			this.radius -=1;
 		}
-
 		this.draw();
 	}
 
-	this.check = function(){
-		colorCheckFun(colorGet);
-	}
 }
 
 //if touched rhe same color or not
@@ -110,19 +101,18 @@ function colorCheckFun(getArray) {
 			}
 
 		}
+	}
 
-		var count = 0;
-		for(var j=0; j<colorCheck.length; j++){
-			if(colorCheck[j]==1) count++;
-		}
+	var count = 0;
+	for(var j=0; j<colorCheck.length; j++){
+		if(colorCheck[j]==1) count++;
+	}
 
-		if(count==colorCheck.length){
-			setTimeout(function(){
-				alert("You Win. \nTry Level 2.");
-				window.location = 'level2.html';
-			}, 500);
-		};
-
+	if(count==colorCheck.length){
+		setTimeout(function(){
+			alert(msg);
+			window.location = site;
+		}, 500);
 	}
 
 }
@@ -149,9 +139,7 @@ function animate(){
 
 	for(var i = 0; i<circleArray.length; i++){
 		circleArray[i].update();
-
 	}
-
 }
 
 init();
