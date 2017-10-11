@@ -97,7 +97,7 @@ function colorCheckFun(getArray) {
 	for(var i=0; i<getArray.length; i++){
 		for(var j=0; j<colorArray.length; j++){
 
-			if((getArray[i]==colorArray[j])&&(colorCheck[j]!=0)){
+			if((getArray[i]==colorArray[j])&&(colorCheck[j]>0)){
 				setTimeout(function(){
 					alert('game over');
 					location.reload();
