@@ -1,3 +1,5 @@
+//setup();
+
 var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -16,8 +18,8 @@ window.addEventListener('touchstart', function(event){
 	var touchobj = event.targetTouches[0];
 	mouse.x = parseInt(touchobj.clientX);
 	mouse.y = parseInt(touchobj.clientY);
-
 }, false);
+
 window.addEventListener('touchend', function(event){
 	mouse.x = undefined;
 	mouse.y = undefined;
@@ -30,8 +32,6 @@ window.addEventListener('resize', function(){
 
 	init();
 });
-
-setup();
 
 function Circle(x, y, dx, dy, radius, id){
 	this.x = x;
@@ -47,7 +47,6 @@ function Circle(x, y, dx, dy, radius, id){
 	this.draw = function(){
 		c.beginPath();
 		c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-		//c.fillStyle = this.color;
 		c.fillStyle = "rgb(" + this.color + ")";
 		c.fill();
 	}
@@ -70,23 +69,20 @@ function Circle(x, y, dx, dy, radius, id){
 				this.radius += 8;
 
 				if(colorGet.indexOf(this.id)==-1){
-					//document.getElementById("s_bubble").play(); //add sound
 					colorGet.push(this.id);
 
-					//ser LED color
-					// if(cpf){
-					// 	cpf.setChainableLed("0," + this.color + ";");
-					// 	//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
-					// }
+					//set LED color
+					//if(cpf){
+						//cpf.setChainableLed("0," + this.color + ";");
+						//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
+					//}
 
-					console.log(colorGet);
 				}
 
 			}				
 		}else if(this.radius>this.minRadius){
 			this.radius -=1;
 		}
-
 
 		this.draw();
 	}
@@ -106,7 +102,6 @@ function colorCheckFun(getArray) {
 
 			if((circleArray[getArray[i]].color==colorArray[j])&&(colorCheck[j]!=0)){
 				setTimeout(function(){
-					document.getElementById("s_lose").play();
 					alert('game over');
 					location.reload();
 				}, 500);
@@ -123,7 +118,6 @@ function colorCheckFun(getArray) {
 
 		if(count==colorCheck.length){
 			setTimeout(function(){
-				document.getElementById("s_win").play();
 				alert("You Win. \nTry Level 2.");
 				window.location = 'level2.html';
 			}, 500);
