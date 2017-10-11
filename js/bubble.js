@@ -14,7 +14,7 @@ var maxRadius = 40;
 
 var colorGet = [];
 
-window.addEventListener('touchstart', function(event){
+window.addEventListener('touchmove', function(event){
 	var touchobj = event.targetTouches[0];
 	mouse.x = parseInt(touchobj.clientX);
 	mouse.y = parseInt(touchobj.clientY);
