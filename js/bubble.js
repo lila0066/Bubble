@@ -71,25 +71,25 @@ function Circle(x, y, dx, dy, radius, id){
 				if(colorGet.indexOf(this.id)==-1){
 					colorGet.push(this.id);
 
-				//set LED color
-				//if(cpf){
-					//cpf.setChainableLed("0," + this.color + ";");
-					//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
-				//}
+					//set LED color
+					//if(cpf){
+						//cpf.setChainableLed("0," + this.color + ";");
+						//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
+					//}
 
-			}
+				}
 
-		}				
-	}else if(this.radius>this.minRadius){
-		this.radius -=1;
+			}				
+		}else if(this.radius>this.minRadius){
+			this.radius -=1;
+		}
+
+		this.draw();
 	}
 
-	this.draw();
-}
-
-this.check = function(){
-	colorCheckFun(colorGet);
-}
+	this.check = function(){
+		colorCheckFun(colorGet);
+	}
 }
 
 //if touched rhe same color or not
@@ -122,8 +122,6 @@ function colorCheckFun(getArray) {
 				window.location = 'level2.html';
 			}, 500);
 		};
-
-
 
 	}
 
