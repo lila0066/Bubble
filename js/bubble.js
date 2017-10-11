@@ -68,16 +68,15 @@ function Circle(x, y, dx, dy, radius, id){
 			if(this.radius<maxRadius){
 				this.radius += 8;
 
-				//if(colorGet.indexOf(this.id)==-1){
-					colorGet.push(this.id);
+				colorGet.push(this.id);
 
-					//set LED color
-					//if(cpf){
-						//cpf.setChainableLed("0," + this.color + ";");
-						//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
-					//}
-
+				//set LED color
+				//if(cpf){
+					//cpf.setChainableLed("0," + this.color + ";");
+					//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
 				//}
+
+
 
 			}				
 		}else if(this.radius>this.minRadius){
