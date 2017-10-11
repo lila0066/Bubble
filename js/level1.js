@@ -12,24 +12,6 @@ var mouse = {
 
 var maxRadius = 40;
 
-// var colorArray = [
-// '#FF3105',
-// '#FFB142',
-// '#009AFF',
-// '#31B400',
-// '#E625E8',
-// '#29CDFF'
-// ];
-
-var colorArray = [
-"255,49,5",
-"255,177,66",
-"0,154,255",
-"49,180,0",
-"230,37,232",
-"41,205,255"
-];
-
 var colorGet = [];
 
 window.addEventListener('touchstart', function(event){
