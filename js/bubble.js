@@ -68,7 +68,8 @@ function Circle(x, y, dx, dy, radius, id){
 			if(this.radius<maxRadius){
 				this.radius += 8;
 
-				colorGet.push(this.id);
+				if(colorGet.indexOf(this.id)==-1){
+					colorGet.push(this.id);
 
 				//set LED color
 				//if(cpf){
@@ -76,17 +77,19 @@ function Circle(x, y, dx, dy, radius, id){
 					//var ret = cpf.request('["grove_setColorRGB", 7,' + this.color + ']');
 				//}
 
-			}				
-		}else if(this.radius>this.minRadius){
-			this.radius -=1;
-		}
+			}
 
-		this.draw();
+		}				
+	}else if(this.radius>this.minRadius){
+		this.radius -=1;
 	}
 
-	this.check = function(){
-		colorCheckFun(colorGet);
-	}
+	this.draw();
+}
+
+this.check = function(){
+	colorCheckFun(colorGet);
+}
 }
 
 //if touched rhe same color or not
